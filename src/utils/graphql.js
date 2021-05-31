@@ -55,3 +55,34 @@ export const POOL_SNAPSHOTS = gql`
  
   }
 `;
+export const SWAPS=gql`
+query swaps ($tokenAddress: Bytes!){
+  swaps(where: { poolId: $tokenAddress }){
+    tokenIn
+    userAddress{
+      id
+    }
+    tokenOut
+    tokenAmountIn
+    tokenAmountOut
+}
+
+}
+
+`
+export const POOLS=gql`
+query pools ($tokenAddress: Bytes!){
+  pools(where: { poolId: $tokenAddress }){
+    id
+    address
+    totalLiquidity
+    totalShares
+    tokens{
+      symbol
+      name
+      balance
+    }
+}
+}
+
+`
