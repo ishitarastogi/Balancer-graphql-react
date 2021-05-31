@@ -10,6 +10,7 @@ export const POOL_TOKENS = gql`
       address
       decimals
       balance
+      weight
     }
   }
 `;
@@ -72,16 +73,12 @@ query swaps ($tokenAddress: Bytes!){
 `
 export const POOLS=gql`
 query pools ($tokenAddress: Bytes!){
-  pools(where: { poolId: $tokenAddress }){
+  pools(where: { id: $tokenAddress }){
     id
     address
     totalLiquidity
     totalShares
-    tokens{
-      symbol
-      name
-      balance
-    }
+    
 }
 }
 
